@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Currency;
 
 public class Rate extends Thread{
 
@@ -16,9 +17,17 @@ public class Rate extends Thread{
 
     private static HttpURLConnection connection;
 
+    private String currency1;
+    private String currency2;
+
+    public Rate(String currency1, String currency2){
+        this.currency1 = currency1;
+        this.currency2 = currency2;
+    }
+
     public void run(){
         this.getRate();
-        System.out.println("Le taux de change entre EUR et USD est de : " + this.currentRate);
+        System.out.println("Le taux de change entre "+this.currency1+" et "+this.currency2+" est de : " + this.currentRate);
     }
 
     private void getRate() {
@@ -28,7 +37,7 @@ public class Rate extends Thread{
         JSONObject obj;
         Gson gson = new GsonBuilder().create();
         try {
-            URL url = new URL("https://api.ibanfirst.com/PublicAPI/Rate/EURUSD");
+            URL url = new URL("https://api.ibanfirst.com/PublicAPI/Rate/"+currency1+currency2);
             connection = (HttpURLConnection) url.openConnection();
 
             connection.setRequestMethod("GET");
