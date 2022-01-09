@@ -1,5 +1,6 @@
 package application;
 
+import Resources.LastRateResource;
 import Resources.RateResource;
 import org.restlet.Application;
 import org.restlet.Context;
@@ -20,6 +21,7 @@ public class RateApplication extends Application {
     public Restlet createInboundRoot(){
         Router router = new Router(getContext());
         router.attach("/rate/{currencyPair}", RateResource.class);
+        router.attach("/lastrate/{currencyPair}", LastRateResource.class);
         return router;
     }
 }
