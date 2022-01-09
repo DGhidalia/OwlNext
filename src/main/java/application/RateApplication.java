@@ -19,7 +19,7 @@ public class RateApplication extends Application {
     @Override
     public Restlet createInboundRoot(){
         Router router = new Router(getContext());
-        router.attach("/rate", RateResource.class);
+        router.attach("/rate/{currencyPair}", RateResource.class);
         return router;
     }
 }

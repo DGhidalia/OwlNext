@@ -28,7 +28,10 @@ public class RateResource extends ServerResource {
 
     @Get("json")
     public Representation getRates() throws JSONException{
-        Collection<RateData> rateDatas = this.backend_.getDatabase().getRates();
+
+        String currencyPair = (String) getRequest().getAttributes().get("currencyPair");
+
+        Collection<RateData> rateDatas = this.backend_.getDatabase().getRates(currencyPair);
         Collection<JSONObject> jsonRates = new ArrayList<>();
 
         for(RateData rd: rateDatas){

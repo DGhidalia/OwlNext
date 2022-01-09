@@ -23,8 +23,7 @@ public class OwlNext {
             String currency1 = sc.nextLine();
             System.out.println("Enter second currency: ");
             String currency2 = sc.nextLine();
-            Rate test = new Rate(currency1, currency2, backend);
-            test.start();
+            System.out.println("The rate between " + currency1 + " and " + currency2 + " is : " + backend.getDatabase().getLastRate(currency1+currency2).getRate());
         }
     }
 

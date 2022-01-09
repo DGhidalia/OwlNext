@@ -37,8 +37,7 @@ public class Rate extends Thread{
         if(toSave == null){
             System.out.println("There is an issue with your pair of currencies, please review them");
         }else {
-            System.out.println("The rate between " + this.currency1 + " and " + this.currency2 + " is : " + this.currentRate);
-            this.backend_.getDatabase().addRate(toSave);
+            this.backend_.getDatabase().addRate(this.currency1+this.currency2, toSave);
         }
     }
 
@@ -71,9 +70,10 @@ public class Rate extends Thread{
                 while ((line = reader.readLine()) != null) {
                     responseContent.append(line);
                 }
-                JSONObject obj = new JSONObject(responseContent.toString()).getJSONObject("rate");
+                JSONObject response = new JSONObject(responseContent.toString());
+                JSONObject rateOBJ =  response.getJSONObject("rate");
                 this.currentRate = new JSONObject(responseContent.toString()).getJSONObject("rate").getDouble("rate");
-                rd = new RateData(this.currency1, this.currency2, obj.getString("date"), obj.getDouble("rate"));
+                rd = new RateData(this.currency1, this.currency2, response.getString("date"), rateOBJ.getDouble("rate"));
                 reader.close();
             }
         }
