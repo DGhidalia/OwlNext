@@ -1,5 +1,9 @@
 package internals;
 
+
+/**
+ * Representation of a rate between two currency including the date when the rate was asked
+ */
 public class RateData {
 
     private String Currency1;

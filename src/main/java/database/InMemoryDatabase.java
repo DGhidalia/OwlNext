@@ -6,6 +6,10 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+
+/**
+ * Database of the application, wiped after each application closed
+ */
 public class InMemoryDatabase {
 
     private int rateCount_;

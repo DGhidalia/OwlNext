@@ -2,6 +2,9 @@ package backend;
 
 import database.InMemoryDatabase;
 
+/**
+ * Backend containig the database
+ */
 public class Backend {
 
     private InMemoryDatabase database_;

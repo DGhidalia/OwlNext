@@ -14,6 +14,9 @@ import org.restlet.resource.ServerResource;
 import java.util.ArrayList;
 import java.util.Collection;
 
+/**
+ * Gives the representation of each currency pair's rate
+ */
 public class RateResource extends ServerResource {
 
     private Backend backend_;
