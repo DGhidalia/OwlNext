@@ -7,6 +7,10 @@ import org.restlet.Context;
 import org.restlet.data.Protocol;
 
 import java.util.Scanner;
+import java.util.Timer;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class OwlNext {
 
@@ -43,6 +47,16 @@ public class OwlNext {
 
         // Start the component
         component.start();
+
+        ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
+
+        //Stores each pair of currency every 10 minutes
+        scheduler.scheduleAtFixedRate(new Rate("EUR", "CHF", backend),0 ,10, TimeUnit.MINUTES);
+        scheduler.scheduleAtFixedRate(new Rate("EUR", "GBP", backend),0 ,10, TimeUnit.MINUTES);
+        scheduler.scheduleAtFixedRate(new Rate("EUR", "USD", backend),0 ,10, TimeUnit.MINUTES);
+        scheduler.scheduleAtFixedRate(new Rate("USD", "CHF", backend),0 ,10, TimeUnit.MINUTES);
+        scheduler.scheduleAtFixedRate(new Rate("USD", "EUR", backend),0 ,10, TimeUnit.MINUTES);
+        scheduler.scheduleAtFixedRate(new Rate("USD", "GBP", backend),0 ,10, TimeUnit.MINUTES);
 
         new OwlNext();
     }
