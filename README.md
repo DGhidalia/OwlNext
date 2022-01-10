@@ -20,4 +20,5 @@ It is also possible to get the last stored rate by typing the currency pair in c
 
 The missing part is having the get on the api that return the best and worst rate for a given currency pair on a particular date.
 My issue on this was the date format, converting a String into Date and then comparing the two of them. 
-My idea was to make the conversion and then compare using native java
+My idea was to make the conversion and then compare using native java.
+It was also possible to manage a database on a local server using JPA.
